@@ -23,22 +23,26 @@ public class HomeController {
         Person person = new Person();
         person.setName("Stephan");
         person.setGender("Male");
+        personRepository.save(person);
 
 
-        // Add person to an Empyty list
-        Set<Person> persons = new HashSet<Person>();
-        persons.add(person);
+//        // Add person to an Empyty list
+//        Set<Person> persons = new HashSet<Person>();
+//        persons.add(person);
 
         Pet pet = new Pet();
         pet.setName("Popy");
         pet.setAge(7);
+        pet.setPerson(person);
+        petRepository.save(pet);
 
         // Add list of pets in to person
         Set<Pet>pets = new HashSet<Pet>();
         pets.add(pet);
 
-        person.setPets(pets);
-        personRepository.save(person);
+      //  person.setPets(pets);
+        person.addPet(pet);
+
         model.addAttribute("person", personRepository.findAll());
         return  "index";
 

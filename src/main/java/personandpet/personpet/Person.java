@@ -1,8 +1,9 @@
 package personandpet.personpet;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,11 +14,12 @@ public class Person {
     private String name;
     private String gender;
 
-@OneToMany(mappedBy = "person",  cascade = CascadeType.ALL)
+@OneToMany( cascade = CascadeType.ALL)
 
 private Set<Pet> pets;
 
     public Person() {
+        pets = new HashSet<>();
     }
 
     public long getId() {
@@ -50,5 +52,9 @@ private Set<Pet> pets;
 
     public void setPets(Set<Pet> pets) {
         this.pets = pets;
+    }
+
+    public void addPet(Pet pet){
+        pets.add(pet);
     }
 }

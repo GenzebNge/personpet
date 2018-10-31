@@ -5,15 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<dive th:each="person : ${persons}"></dive>
-<h2 th:text="${person.name}"></h2>
-<h2 th:text="${person.gender}"></h2>
+<dive th:each="person : ${persons}">
+    <h2 th:text="${person.name}"></h2>
+<h6 th:inline="text"> [[${person.gender}]]"></h6>
 <ul>
     <th:block th:each="pet : ${person.pets}">
         <li th:inline="text"><b>[[${pet.name}]]</b>
         Age [[${pet.age}]]</li>
     </th:block>
 </ul>
+</dive>
 
 </body>
 </html>

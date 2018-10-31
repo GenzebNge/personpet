@@ -12,6 +12,14 @@ public class Pet {
     private String name;
     private long age;
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="person_id")
     private Person person;
